@@ -16,7 +16,7 @@
 	<script src="cordova.js"></script>
 
 
-	
+
 
 <script type="text/javascript">
             $(document).ready(function(){
@@ -26,14 +26,14 @@
                 if($.trim(ID).length >0 & $.trim(pass).length >0) {
                     $.ajax({
                         type:"POST",  //Request type
-                        url: "http://192.168.100.3/MobileHybrid/www/firstname.php",   
+                        url: "http://192.168.100.3/MobileHybrid/www/firstname.php",
                         data:{ID:ID, pass:pass},
                         cache:false,
                         success:function(data) {
                             alert(data);
                         }
                     })
-                } 
+                }
                 else {
                     alert("Input fields are empty");
                 }
@@ -68,7 +68,7 @@
 //         var u = $("#UserID", this).val().trim();
 //         var p = $("#UserPass", this).val().trim();
 //         if(u != '' && p!= '') {
-        	
+
 //         		if(true) {
 //         			window.open("#pagestudent");
 //         		} else {
@@ -78,12 +78,12 @@
 //         		}
 // 	        	$("#submitButton").removeAttr("disabled");
 //         	}
-        
+
 //         return false;
 //     });
 
 // function Login() {
-// 	var form = $("#loginForm");	
+// 	var form = $("#loginForm");
 // 	//disable the button so we can't resubmit while we wait
 // 	$("#submitButton",form).attr("disabled","disabled");
 // 	var u = $("#username", form).val();
@@ -94,7 +94,7 @@
 // 			if(res == true) {
 // 				//store
 // 				window.localStorage["username"] = u;
-// 				window.localStorage["password"] = p;        			
+// 				window.localStorage["password"] = p;
 // 				$.mobile.changePage("index.html");
 // 			} else {
 // 				navigator.notification.alert("Your login failed", function() {});
@@ -112,7 +112,7 @@
 // 	var form = $("#loginForm");
 // 	var u = $("#username", form).val();
 // 	var p = $("#password", form).val();
-	
+
 // }
 </script>
 
@@ -222,7 +222,7 @@
 
 					<label for="rememberMe">Remember Me</label>
 					<input type="checkbox" id="rememberMe" name="rememberMe"/>
-					
+
 					<p id="errMsg"></p>
 
 					<div id="buttonDialog" style="">
@@ -514,7 +514,7 @@
       <td>2088353</td>
       <td><a onclick="window.open('http://www.ewf.mu', '_system'); return false;" href="http://www.ewf.mu" rel="external"  target="_blank" class="ui-shadow ui-btn ui-corner-all ui-mini ui-icon-navigation ui-btn-icon-left">Visit Website</a></td>
     </tr>
-   
+
   </tbody>
 </table>
 
@@ -591,10 +591,10 @@
 			<div class="ui-block-a"></div>
 			<div class="ui-block-b">
 				<p>Find event location:</p><address>Cascavelle</address>
-				
- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />  
+
+ <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    
+
   <style type="text/css">
         #lounge, #map {
             height: 100%;
@@ -602,7 +602,7 @@
 
         #map-content{
             height: 100%;
-            padding: 0px; 
+            padding: 0px;
             margin:0px;
             z-index: -1;
         }
@@ -611,7 +611,7 @@
   <script type='text/javascript'>
     //<![CDATA[
     $(window).load(function(){
-        
+
         var element = $('#lounge');
 
         element.height(element.height() - 42);
@@ -630,7 +630,7 @@
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
     });
-    //]]> 
+    //]]>
 
     </script>
 					<div id="map-content" data-role="content">
@@ -701,15 +701,15 @@
 		</div><!-- /panel -->
 
 		<div data-role="main" class="ui-content jqm-content jqm-fullwidth">
-			
-			
+
+
 				<h3>About Us</h3>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="img/aboutUTM.jpg" id="img2" class="ui-responsive"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="img/aboutUTMM.jpg" id="img3" class="ui-responsive" />
 
-				
+
 				<div class="ui-grid-solo">	<div class="ui-block-a"><br/>The University of Technology, Mauritius (UTM) was created in year 2000 by Act of Parliament as the Government implemented its plan to have a second University which would focus towards development of oriented sectors in particular. Two state institutions namely the Mauritius Institute of Public Administration and Management (MIPAM) and the State Information Training Centre (SITRAC Ltd) were merged to form the University of Technology, Mauritius.<br/><br/> This historic step in the field of higher education was prompted mainly by the need to cater more vigorously for the increasing demand for ICT and Management professionals in a country which is seriously committed to accelerate, by all means, the realization of its ambition to become a major service provider in the field of Information Technology, Management and Finance, Sustainable Development and allied areas.<br/><br/> The University started operation by the end of year 2000. The Board of Governors (B.O.G), was in place and in year 2001, created its senior management personnel.</div>
 			</div>
 
@@ -740,14 +740,14 @@
 
 
 
-  
-  <script type="text/javascript">
+
+  <!-- <script type="text/javascript">
 
   // window.openDatabase("database-name","version","database description","database size in bytes")
    var db = window.openDatabase("utm_db", "1.0", "Hybrid Mobile App", 2*1024*1024);
   //var db = window.openDatabase("tutorialdb", "1.0", "tutorial database", 1000000); //will create database Dummy_DB or open it
   document.addEventListener("deviceready", onDeviceReady, false);
- 
+
   function onDeviceReady() {
 
    // Create Table
@@ -802,10 +802,10 @@ tx.executeSql('INSERT INTO tblEvent (evt_id,evt_title,staff_id,evt_timestamp,evt
   // Fetch all records
   function fetchData(){
    db.transaction(function(tx){
- 
+
     tx.executeSql("select * from notes",[],function(tx,result){
      var len = result.rows.length;
- 
+
      for (var i=0; i<len; i++){
       var note = result.rows.item(i).note;
 
@@ -815,11 +815,11 @@ tx.executeSql('INSERT INTO tblEvent (evt_id,evt_title,staff_id,evt_timestamp,evt
       li.appendChild(document.createTextNode(note));
       ul.appendChild(li);
      }
- 
+
     },errorCB);
    }, errorCB, successCB);
   }
- 
+
   function insertData(){
 
    // Insert record
@@ -837,12 +837,12 @@ tx.executeSql('INSERT INTO tblEvent (evt_id,evt_title,staff_id,evt_timestamp,evt
 var pass = $("#UserPass").val();
 tx.executeSql("select * from tblStudent where std_id = (?) and std_pass = (?)",[uname,pass],function(tx,result){
    var len = result.rows.length;
- 
+
    for (var i=0; i<len; i++){
     var username = result.rows.item(i).std_id;
     var password = result.rows.item(i).std_pass;
-    	
-    	
+
+
  		}
  		if (uname==username && pass==password) {
  			//console.log("Username: "+username+" "+"Password: "+password);
@@ -856,21 +856,21 @@ tx.executeSql("select * from tblStudent where std_id = (?) and std_pass = (?)",[
  		else{
 
  			alert("Check Username/Password");
- 			
- 			
+
+
  		}
 
    });
 
-  
+
 }
 
   function insertNote(tx){
    var note = document.getElementById('note').value;
- 
+
    // Insert query
    tx.executeSql("INSERT INTO notes(note) VALUES (?)",[note]);
- 
+
    // Append new list item
    var ul = document.getElementById("list");
    var li = document.createElement("li");
@@ -885,14 +885,14 @@ tx.executeSql("select * from tblStudent where std_id = (?) and std_pass = (?)",[
   function successCB() {
    // alert("success!");
   }
- 
+
   </script>
 
 
 
 
 
-
+ -->
 
 
 
