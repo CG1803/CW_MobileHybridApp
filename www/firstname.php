@@ -1,9 +1,3 @@
-<!-- <?php
-    //$ID = $_POST['ID'];
-    //$pass = $_POST['pass'];
-    //echo $ID."  ".$pass;
-?> -->
-
 
 <?php
     /*
