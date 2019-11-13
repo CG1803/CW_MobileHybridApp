@@ -6,14 +6,14 @@
         ' ' this root has no password protection, hence empty
         my_db is db with which we want to connect
     */
-    $con = mysqli_connect('127.0.0.1','root','NO','mydb') or die ('unable to connect');
+    $con = mysqli_connect('localhost','root','','mydb') or die ('unable to connect');
 
-    $ID = $_POST['ID'];
-    $pass = $_POST['pass'];
-    $sql = "INSERT INTO 'my_table'('firstname','lastname') VALUES('$ID','$pass')";
+    $_ID = $_POST['firstname'];
+    $pass = $_POST['lastname'];
+    $sql = "INSERT INTO 'my_table'('firstname','lastname') VALUES('$_ID','$pass')";
     $result = mysqli_query($con,$sql);
     if($result) {
-        echo $ID." ".$pass;
+        echo $_ID." ".$pass;
     }
     else {
         echo "unable to insert data";

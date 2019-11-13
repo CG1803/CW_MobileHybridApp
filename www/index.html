@@ -20,14 +20,14 @@
 
 <script type="text/javascript">
             $(document).ready(function(){
-                $("#buttonDialog").click(function(){
-                var ID = $("#UserID").val();
-                var pass = $("#UserPass").val();
-                if($.trim(ID).length >0 & $.trim(pass).length >0) {
+                $("#sub").click(function(){
+									var firstname = $("#firstname").val();
+							 var lastname = $("#lastname").val();
+                if($.trim(firstname).length >0 & $.trim(lastname).length >0) {
                     $.ajax({
                         type:"POST",  //Request type
                         url: "http://192.168.100.3/MobileHybrid/www/firstname.php",
-                        data:{ID:ID, pass:pass},
+                        data:{firstname:firstname, lastname:lastname},
                         cache:false,
                         success:function(data) {
                             alert(data);
@@ -712,7 +712,9 @@
 
 				<div class="ui-grid-solo">	<div class="ui-block-a"><br/>The University of Technology, Mauritius (UTM) was created in year 2000 by Act of Parliament as the Government implemented its plan to have a second University which would focus towards development of oriented sectors in particular. Two state institutions namely the Mauritius Institute of Public Administration and Management (MIPAM) and the State Information Training Centre (SITRAC Ltd) were merged to form the University of Technology, Mauritius.<br/><br/> This historic step in the field of higher education was prompted mainly by the need to cater more vigorously for the increasing demand for ICT and Management professionals in a country which is seriously committed to accelerate, by all means, the realization of its ambition to become a major service provider in the field of Information Technology, Management and Finance, Sustainable Development and allied areas.<br/><br/> The University started operation by the end of year 2000. The Board of Governors (B.O.G), was in place and in year 2001, created its senior management personnel.</div>
 			</div>
-
+			<input type="text" placeholder="write your first name" id="firstname">
+			        <input type="text" placeholder="write your last name" id="lastname">
+			        <button id="sub">Submit result</button>
 
 		</div>
 
