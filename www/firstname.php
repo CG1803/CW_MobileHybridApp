@@ -12,7 +12,7 @@
         ' ' this root has no password protection, hence empty
         my_db is db with which we want to connect
     */
-    $con = mysqli_connect('127.0.0.1','root','','mydb') or die ('unable to connect');
+    $con = mysqli_connect('127.0.0.1','root','NO','mydb') or die ('unable to connect');
 
     $ID = $_POST['ID'];
     $pass = $_POST['pass'];
