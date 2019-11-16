@@ -69,10 +69,10 @@ tx.executeSql("select * from tblNews",[],function(tx,result){
 
 function createDB(tx){
 
-	// tx.executeSql('DROP TABLE tblEvent');
-	// tx.executeSql('DROP TABLE tblNews');
-	// tx.executeSql('DROP TABLE tblStudent');
-	// tx.executeSql('DROP TABLE tblStaff');
+	tx.executeSql('DROP TABLE tblEvent');
+	tx.executeSql('DROP TABLE tblNews');
+	tx.executeSql('DROP TABLE tblStudent');
+	tx.executeSql('DROP TABLE tblStaff');
 
 // Table Staff
 tx.executeSql('CREATE TABLE IF NOT EXISTS tblStaff (staff_id int(11) NOT NULL,	staff_fname text NOT NULL,staff_lname text NOT NULL,staff_email varchar(25) NOT NULL,staff_phone varchar(8) NOT NULL,CONSTRAINT staff_id_pk PRIMARY KEY(staff_id),CONSTRAINT staff_email_uk UNIQUE (staff_email),CONSTRAINT staff_phone_uk UNIQUE (staff_phone))');

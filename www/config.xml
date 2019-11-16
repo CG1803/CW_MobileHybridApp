@@ -27,7 +27,7 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     
-    
+    <plugin spec="https://github.com/litehelpers/Cordova-sqlite-evcore-extbuild-free.git#0.8.2" source="git" />
     
 <platform name="android">
         <!--
