@@ -1,0 +1,63 @@
+.button-wrap {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.hea{
+  background-color: rgba(65, 95, 122, 0.3);
+}
+
+#schoolbody{
+  background-color: gray;
+}
+
+#loans {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#loans td, #loans th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#loans tr:nth-child(even){background-color: rgba(149, 163, 201,0.3)}
+#loans tr:nth-child(odd){background-color: rgba(149, 163, 201,0.6)}
+
+#loans th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#erasmus{
+  text-align: left;
+}
+
+
+#buttonDialog{
+
+}
+
+#errMsg{
+  color: red;
+  font-size: 1em;
+  border: 0;
+  padding: 0;
+}
+
+#img2,#img3,#img4{padding-right: 10px;width: 320px;}
+
+#blocb{width: 80%;}
+#blocA,#blocC{width: 10%;}
+
+#A,#C{
+  width: 10%;
+}
+#B{
+  width: 80%;
+}
