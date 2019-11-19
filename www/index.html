@@ -27,58 +27,48 @@
 						<h3>News</h3>
 						<ul data-role="listview" data-inset="true">
 							<div id="newsguest">
-
-
-								<!-- 
-							<li data-role="list-divider">Friday, October 8, 2010 <span class="ui-li-count">2</span></li>
-							
-							<li>
-								<a href="index.html">
-									<h2>jQuery Team</h2>
-									<p><strong>Boston Conference Planning</strong></p>
-									<p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
-									<p class="ui-li-aside"><strong>9:18</strong>AM</p>
-								</a>
-							</li>
-							<li data-role="list-divider">Thursday, October 7, 2010 <span class="ui-li-count">1</span></li>
-							<li>
-								<a href="index.html">
-									<h2>Avery Walker</h2>
-									<p><strong>Re: Dinner Tonight</strong></p>
-									<p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait!</p>
-									<p class="ui-li-aside"><strong>4:48</strong>PM</p>
-								</a>
-							</li> -->
-
-
+								<!--li data-role="list-divider">Friday, October 8, 2010 <span class="ui-li-count">2</span></li>								
+								<li>
+									<a href="index.html">
+										<h2>jQuery Team</h2>
+										<p><strong>Boston Conference Planning</strong></p>
+										<p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
+										<p class="ui-li-aside"><strong>9:18</strong>AM</p>
+									</a>
+								</li>
+								<li data-role="list-divider">Thursday, October 7, 2010 <span class="ui-li-count">1</span></li>
+								<li>
+									<a href="index.html">
+										<h2>Avery Walker</h2>
+										<p><strong>Re: Dinner Tonight</strong></p>
+										<p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait!</p>
+										<p class="ui-li-aside"><strong>4:48</strong>PM</p>
+									</a>
+								</li> -->
 							</div>
 						</ul>
-
 						<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-					<script>
-	        //When the page has loaded.
-	        $( document ).ready(function(){
-	            //Perform Ajax request.
-	            $.ajax({
-	            	url: 'http://localhost:8080/mobilecw/newsguest.php',
-	            	type: 'get',
-	            	success: function(data){
-	                    //If the success function is execute,
-	                    //then the Ajax request was successful.
-	                    //Add the data we received in our Ajax
-	                    //request to the "content" div.
-	                    $('#newsguest').html(data);
+						<script>
+	        		//When the page has loaded.
+	        		$( document ).ready(function(){
+	            	//Perform Ajax request.
+	            	$.ajax({
+	            		url: 'http://localhost:8080/mobilecw/newsguest.php',
+	            		type: 'get',
+	            		success: function(data){
+	                  //If the success function is execute,
+	                  //then the Ajax request was successful.
+	                  //Add the data we received in our Ajax
+	                  //request to the "content" div.
+	                  $('#newsguest').html(data);
 	                },
 	                error: function (xhr, ajaxOptions, thrownError) {
 	                	var errorMsg = 'Ajax request failed: ' + xhr.responseText;
 	                	$('#newsguest').html(errorMsg);
 	                }
-	            });
-	        });
-	    </script> -->
-
-
-
+	            	});
+	        		});
+	    			</script> -->
 					</div>
 				</div>
 			</div><!-- /grid-a -->
@@ -146,7 +136,7 @@
 					<label id="mess"></label>
 					<input type="submit" name="loginBtn" id="loginBtn" value="Login" />
 					<button class="ui-btn ui-shadow"
-						onclick="window.location.href = 'http://192.168.100.3:3000/';return false;">Cancel</button>
+						onclick="window.location.href = 'http://192.168.56.1:3000/';return false;">Cancel</button>
 				</div>
 			</form>
 			<script type="text/javascript">
@@ -852,7 +842,29 @@
 				<li><a href="#pageabout">About</a></li>
 			</ul>
 		</div><!-- /panel -->
+		<script type="text/javascript">
+			$(document).on("pagecreate", "#lounge", function () {
+				$(document).on("swipeleft swiperight", "#lounge", function (e) {
+					// We check if there is no open panel on the page because otherwise
+					// a swipe to close the left panel would also open the right panel (and v.v.).
+					// We do this by checking the data that the framework stores on the page element (panel: open).
+					if ($(".ui-page-active").jqmData("panel") !== "open") {
+						if (e.type === "swipeleft") {
+							$("#right-panel").panel("open");
+						} else if (e.type === "swiperight") {
+							$("#nav-panel").panel("open");
+						}
+					} else {
+						if ($(".ui-page-active").jqmData("panel") !== "close") {
+							if (e.type === "swipeleft") {
+								$("#nav-panel").panel("close");
 
+							}
+						}
+					}
+				});
+			});
+		</script>
 		<div data-role="main" class="ui-content jqm-content jqm-fullwidth">
 
 			<div class="ui-grid-b">
@@ -1496,9 +1508,9 @@
 			<img alt="UTM Logo" src="img/UTM.png" class="utmLogo" style="margin-left:30%;margin-right:30%;width:40%;" />
 			<a href="#stu_nav_home" data-icon="bars" data-iconpos="notext" class="ui-btn-left"></a>
 			<button id="btn_logout" onclick="logout()" data-icon="user">Log Out</button>
-			<p class="stu_corner">
+			<!-- <p class="stu_corner">
 				Welcome Username
-			</p>
+			</p> -->
 		</div>
 		<div data-role="main" class="ui-content jqm-content jqm-fullwidth">
 			<div class="ui-grid-solo">
@@ -1541,9 +1553,9 @@
 		</div>
 		<div data-role="panel" data-display="push" id="stu_nav_home">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -1592,16 +1604,10 @@
 				data-expanded-icon="carat-r">
 				<div data-role="collapsible" style="margin-bottom: 10px;">
 					<h3>School of Business, Management and Finance (SBMF) </h3>
-					<div class="ui-grid-b">
-						<div class="ui-block-a">
-							<a href="#" class="ui-shadow ui-btn ui-corner-all ui-mini" target="_blank">
-								<!-- <object data="pdf/SBMF/AmendedMBA_GeneralPT_23sep2013_.pdf" type="application/pdf" width="300" height="200"> -->
-								<!-- href="pdf/SBMF/AmendedMBA_GeneralPT_23sep2013_.pdf" </object> </a>-->
-								Undergraduate
-							</a>
-						</div>
+					<div class="ui-grid-solo">
+				
 						<div class="ui-grid-b">
-							<div class="ui-block-a"><a href="#" class="ui-shadow ui-btn ui-corner-all ui-mini"
+							<div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-mini ui-corner-all "
 									onclick="window.open('https://docs.google.com/viewer?url=http://www.utm.ac.mu/files/sthug/programmes/sbmf/ug%20july%202017/BSc_Hons_Banking_and_International_Finance.pdf', '_system'); return false;"
 									target="_blank">
 									<!-- <object data="pdf/SBMF/AmendedMBA_GeneralPT_23sep2013_.pdf" type="application/pdf" width="300" height="200"> -->
@@ -1633,18 +1639,7 @@
 									target="_blank">
 									Results</a></div>
 						</div>
-						<div class="ui-block-b"><a href="#" class="ui-shadow ui-btn ui-corner-all ui-mini"
-								target="_blank">Postgraduate</a></div>
-						<div class="ui-block-c"><a href="#" class="ui-shadow ui-btn ui-corner-all ui-mini"
-								target="_blank">Staff List</a></div>
-					</div>
-					<div class="ui-grid-b">
-						<div class="ui-block-a"><a href="#" class="ui-shadow ui-btn ui-corner-all ui-mini">Exam
-								Timetable</a></div>
-						<div class="ui-block-b"><a href="#" class="ui-shadow ui-btn ui-corner-all ui-mini">Semester
-								TimeTable</a></div>
-						<div class="ui-block-c"><a href="#" class="ui-shadow ui-btn ui-corner-all ui-mini">Results</a>
-						</div>
+						
 					</div>
 				</div>
 				<div data-role="collapsible" style="margin-bottom: 10px;">
@@ -1708,9 +1703,9 @@
 		</div>
 		<div data-role="panel" data-display="push" id="nav-panelschools">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -1755,9 +1750,9 @@
 		</div>
 		<div data-role="panel" data-display="push" id="nav-panelstud">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -1766,6 +1761,29 @@
 				<li><a href="#about_student">About</a></li>
 			</ul>
 		</div><!-- /panel -->
+		<script type="text/javascript">
+			$(document).on("pagecreate", "#profile_students", function () {
+				$(document).on("swipeleft swiperight", "#profile_students", function (e) {
+					// We check if there is no open panel on the page because otherwise
+					// a swipe to close the left panel would also open the right panel (and v.v.).
+					// We do this by checking the data that the framework stores on the page element (panel: open).
+					if ($(".ui-page-active").jqmData("panel") !== "open") {
+						if (e.type === "swipeleft") {
+							$("#right-panel").panel("open");
+						} else if (e.type === "swiperight") {
+							$("#nav-panelstud").panel("open");
+						}
+					} else {
+						if ($(".ui-page-active").jqmData("panel") !== "close") {
+							if (e.type === "swipeleft") {
+								$("#nav-panelstud").panel("close");
+
+							}
+						}
+					}
+				});
+			});
+		</script>
 		<div data-role="main" class="ui-content jqm-content jqm-fullwidth">
 			<div data-role="collapsible" style="margin-bottom: 10px;" data-collapsed-icon="carat-d"
 				data-expanded-icon="carat-r">
@@ -2029,15 +2047,14 @@
 			<ul data-role="listview" data-filter="true" data-input="#filter-input-evt-stu">
 				<li><a href="#loungeStu">MITIA SPORTS AND FUN DAY</a></li>
 				<li><a href="#">Activity Week</a></li>
-				<li><a href="#">1 fete parla</a></li>
 				<li><a href="#">Village Vanguard</a></li>
 			</ul>
 		</div>
-		<div data-role="panel" data-display="push" id="nav-panelevt">
+		<div data-role="panel" data-display="push" id="nav-panelevt2">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -2056,12 +2073,12 @@
 						if (e.type === "swipeleft") {
 							$("#right-panel").panel("open");
 						} else if (e.type === "swiperight") {
-							$("#nav-panelevt").panel("open");
+							$("#nav-panelevt2").panel("open");
 						}
 					} else {
 						if ($(".ui-page-active").jqmData("panel") !== "close") {
 							if (e.type === "swipeleft") {
-								$("#nav-panelevt").panel("close");
+								$("#nav-panelevt2").panel("close");
 
 							}
 						}
@@ -2080,11 +2097,11 @@
 			<a href="#nav-panel" data-icon="bars" data-iconpos="notext" class="ui-btn-left"></a>
 			<button id="btn_logout" onclick="logout()" data-icon="user">Log Out</button>
 		</div>
-		<div data-role="panel" data-display="push" id="nav-panel">
+		<div data-role="panel" data-display="push" id="nav-panel2">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -2093,10 +2110,33 @@
 				<li><a href="#about_student">About</a></li>
 			</ul>
 		</div><!-- /panel -->
+		<script type="text/javascript">
+			$(document).on("pagecreate", "#loungeStu", function () {
+				$(document).on("swipeleft swiperight", "#loungeStu", function (e) {
+					// We check if there is no open panel on the page because otherwise
+					// a swipe to close the left panel would also open the right panel (and v.v.).
+					// We do this by checking the data that the framework stores on the page element (panel: open).
+					if ($(".ui-page-active").jqmData("panel") !== "open") {
+						if (e.type === "swipeleft") {
+							$("#right-panel").panel("open");
+						} else if (e.type === "swiperight") {
+							$("#nav-panel2").panel("open");
+						}
+					} else {
+						if ($(".ui-page-active").jqmData("panel") !== "close") {
+							if (e.type === "swipeleft") {
+								$("#nav-panel2").panel("close");
+
+							}
+						}
+					}
+				});
+			});
+		</script>
 		<div data-role="main" class="ui-content jqm-content jqm-fullwidth">
 				<div class="ui-grid-b">
-						<div class="ui-block-a"></div>
-						<div class="ui-block-b">
+						<div class="ui-block-a" id="A"></div>
+						<div class="ui-block-b" id="B">
 							<p>Find event location:</p>
 							<address>Cascavelle</address>
 							<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
@@ -2109,8 +2149,8 @@
 		
 								#mapStu,
 								#map-content {
-									height: 720px;
-									width: 360px;
+									height: 520px;
+									width: 100%;
 									padding: 0px;
 									margin: 0px;
 									z-index: -1;
@@ -2142,7 +2182,7 @@
 							</div>
 							<a href="#pageevents" class="ui-btn ui-icon-back ui-btn-icon-left" data-rel="back">Back</a>
 						</div>
-						<div class="ui-block-c"></div>
+						<div class="ui-block-c" id="C"></div>
 					</div><!-- /grid-b -->
 		</div>
 		<div data-role="footer" style="font-size:80%;">
@@ -2158,9 +2198,9 @@
 		</div>
 		<div data-role="panel" data-display="push" id="nav-panelprog">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -2649,11 +2689,11 @@
 			<a href="#nav-panelabout" data-icon="bars" data-iconpos="notext" class="ui-btn-left"></a>
 			<button id="btn_logout" onclick="logout()" data-icon="user">Log Out</button>
 		</div>
-		<div data-role="panel" data-display="push" id="nav-panelabout">
+		<div data-role="panel" data-display="push" id="nav-panelabout2">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -2672,12 +2712,12 @@
 						if (e.type === "swipeleft") {
 							$("#right-panel").panel("open");
 						} else if (e.type === "swiperight") {
-							$("#nav-panelabout").panel("open");
+							$("#nav-panelabout2").panel("open");
 						}
 					} else {
 						if ($(".ui-page-active").jqmData("panel") !== "close") {
 							if (e.type === "swipeleft") {
-								$("#nav-panelabout").panel("close");
+								$("#nav-panelabout2").panel("close");
 
 							}
 						}
@@ -2687,7 +2727,31 @@
 		</script>
 
 		<div data-role="main" class="ui-content jqm-content jqm-fullwidth">
-			<p>This is About page</p>
+			<h3>About Us</h3>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="img/aboutUTM.jpg" id="img2" class="ui-responsive" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="img/aboutUTMM.jpg" id="img3" class="ui-responsive" />
+
+
+
+			<div class="ui-grid-solo">
+				<div class="ui-block-a"><br />The University of Technology, Mauritius (UTM) was created in year 2000 by
+					Act of Parliament as the Government implemented its plan to have a second University which would
+					focus towards development of oriented sectors in particular. Two state institutions namely the
+					Mauritius Institute of Public Administration and Management (MIPAM) and the State Information
+					Training Centre (SITRAC Ltd) were merged to form the University of Technology,
+					Mauritius.<br /><br /> This historic step in the field of higher education was prompted mainly by
+					the need to cater more vigorously for the increasing demand for ICT and Management professionals in
+					a country which is seriously committed to accelerate, by all means, the realization of its ambition
+					to become a major service provider in the field of Information Technology, Management and Finance,
+					Sustainable Development and allied areas.<br /><br /> The University started operation by the end of
+					year 2000. The Board of Governors (B.O.G), was in place and in year 2001, created its senior
+					management personnel.</div>
+			</div>
+
+			<ul class="list" id="listview">
+			</ul>
 		</div>
 		<div data-role="footer" style="font-size:80%;">
 			<h5>Copyright &copy; 2019 University Of Technology, Mauritius.<br> All Rights Reserved.</h5>
@@ -2704,9 +2768,9 @@
 		</div>
 		<div data-role="panel" data-display="push" id="nav-panelstaff">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -2813,7 +2877,7 @@
 
 
 				<input type="button" name="save" class="btn btn-primary" value="POST" id="butsave">
-				<a href="#event_student" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-shadow" data-rel="back">Cancel</a>
+				<a href="#event_student" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-shadow" data-rel="back">Close</a>
 			</form>
 
 			<script>
@@ -2927,7 +2991,7 @@
 	
 	
 					<input type="button" name="save" class="btn btn-primary" value="POST" id="butsaveE">
-					<a href="#event_student" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-shadow" data-rel="back">Cancel</a>
+					<a href="#event_student" class="ui-btn ui-icon-back ui-btn-icon-left ui-btn-shadow" data-rel="back">Close</a>
 				</form>
 	
 				<script>
@@ -3020,9 +3084,9 @@
 		</div>
 		<div data-role="panel" data-display="push" id="nav-paneladmin">
 			<ul data-role="listview">
-				<li>
+				<!-- <li>
 					<div class="stu_corner">UserName</div>
-				</li>
+				</li> -->
 				<li><a href="#home_student">Home</a></li>
 				<li><a href="#event_student">Events</a></li>
 				<li><a href="#pageschools_students">Schools</a></li>
@@ -3071,7 +3135,7 @@
 								function logout() {
 
 									localStorage.clear();
-									window.location.href = 'http://192.168.100.3:3000/';
+									window.location.href = 'http://192.168.56.1:3000/';
 								}
 
 
